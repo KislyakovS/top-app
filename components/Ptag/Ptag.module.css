@@ -1,0 +1,22 @@
+.text {
+	margin: 0;
+	padding: 0;
+}
+
+.big {
+	font-size: var(--big-font-size);
+	font-weight: normal;
+	line-height: 29px;
+}
+
+.medium {
+	font-size: var(--medium-font-size);
+	font-weight: normal;
+	line-height: 24px;
+}
+
+.small {
+	font-size: var(--small-font-size);
+	font-weight: normal;
+	line-height: 24px;
+}

@@ -30,4 +30,7 @@ a {
 	--green-lite: #C8F8E4;
 	--background: #F5F6F8;
 	--font-family: 'Noto Sans KR', sans-serif;
+	--big-font-size: 18px;
+	--medium-font-size: 16px;
+	--small-font-size: 14px;
 }
