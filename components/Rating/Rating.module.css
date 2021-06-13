@@ -1,0 +1,24 @@
+.rating {
+	display: flex;
+
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+}
+
+.item {
+	padding-right: 5px;
+}
+
+.item_editable {
+	cursor: pointer;
+}
+
+.item:last-child {
+	padding-right: 0;
+}
+
+.filled {
+	fill: var(--primary);
+}

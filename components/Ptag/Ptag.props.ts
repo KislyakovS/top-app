@@ -1,8 +1,8 @@
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 
-type DefaultButtonProps = DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>;
+type DefaultElement = DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>;
 
-interface PtagProps extends DefaultButtonProps {
+interface PtagProps extends DefaultElement {
     size?: 'big' | 'medium' | 'small';
     children: ReactNode;
 }

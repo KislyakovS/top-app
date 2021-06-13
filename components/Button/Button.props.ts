@@ -1,8 +1,8 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
 
-type DefaultButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+type DefaultElement = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 
-interface ButtonProps extends DefaultButtonProps {
+interface ButtonProps extends DefaultElement {
     apperance?: 'primary' | 'ghost'
     arrow?: 'right' | 'down' | 'none';
     children: ReactNode;

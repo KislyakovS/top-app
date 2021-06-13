@@ -1,8 +1,8 @@
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 
-type DefaultButtonProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+type DefaultElement = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
-interface ChipProps extends DefaultButtonProps {
+interface ChipProps extends DefaultElement {
     size?: 'big' | 'medium';
     color?: 'ghost' | 'red' | 'green' | 'grey' | 'primary'
     href?: string;
