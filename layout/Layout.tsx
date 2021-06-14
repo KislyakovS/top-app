@@ -3,19 +3,18 @@ import Sidebar from './Sidebar/Sidebar';
 import Footer from './Footer/Footer';
 
 import LayoutProps from './Layout.props';
+import styles from './Layout.module.css';
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
-        <>
-            <Header />
-            <main>
-                <Sidebar />
-                <div>
-                    {children}
-                </div>
+        <div className={styles.wrapper}>
+            <Header className={styles.header} />
+            <Sidebar className={styles.sidebar} />
+            <main className={styles.main}>
+                {children}
             </main>
-            <Footer />
-        </>
+            <Footer className={styles.footer} />
+        </div >
     );
 }
 

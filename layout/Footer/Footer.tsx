@@ -1,9 +1,22 @@
-import FooterProps from './Footer.props';
+import cls from 'clsx';
 
-const Footer: React.FC<FooterProps> = (props) => {
+import FooterProps from './Footer.props';
+import styles from './Footer.module.css';
+
+const CURRENT_YEAR = new Date().getFullYear();
+
+const Footer: React.FC<FooterProps> = ({ className, ...props }) => {
     return (
-        <footer {...props}>
-            Footer
+        <footer className={cls(styles.footer, className)}  {...props}>
+            <p>
+                OwlTop © 2020 - {CURRENT_YEAR} Все права защищены
+            </p>
+            <a href="#">
+                Пользовательское соглашение
+            </a>
+            <a href="#">
+                Политика конфиденциальности
+            </a>
         </footer>
     );
 };
