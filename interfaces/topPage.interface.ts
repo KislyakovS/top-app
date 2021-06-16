@@ -1,4 +1,4 @@
-enum TopLevalCategory {
+export enum TopLevalCategory {
     Courses,
     Services,
     Books,
