@@ -77,6 +77,14 @@
 	line-height: 16px;
 }
 
+.secondLevelSubmenu {
+	display: none;
+}
+
+.secondLevelSubmenu.opened {
+	display: block;
+}
+
 .thirdLevel {
 	margin: 0;
 	padding: 0;
