@@ -30,23 +30,29 @@ const Menu: React.FC = () => {
         setMenu(menu.map(m => m._id.secondCategory === category ? ({ ...m, isOpened: !m.isOpened }) : m));
     };
 
+    console.log(router);
+
     const buildFirstLevel = () => {
         return (
             <ul className={styles.firstLevel}>
                 {firstLevelMenu.map(menu => {
-                    return <li key={menu.route} className={styles.firstLevelItem}>
-                        <Link href={`/${menu.route}`}>
-                            <a className={cls(
-                                styles.firstLevelLink,
-                                menu.id === firstCategory && styles.active
-                            )}
-                            >
-                                <span className={styles.icon}>{menu.icon}</span>
-                                {menu.name}
-                            </a>
-                        </Link>
-                        {menu.id === firstCategory && buildSecondLevel(menu)}
-                    </li>;
+                    const isActive = router.pathname === `/${menu.route}`;
+
+                    return (
+                        <li key={menu.route} className={styles.firstLevelItem}>
+                            <Link href={`/${menu.route}`}>
+                                <a className={cls(
+                                    styles.firstLevelLink,
+                                    menu.id === firstCategory && styles.active
+                                )}
+                                >
+                                    <span className={styles.icon}>{menu.icon}</span>
+                                    {menu.name}
+                                </a>
+                            </Link>
+                            {menu.id === firstCategory && buildSecondLevel(menu)}
+                        </li>
+                    );
                 })}
             </ul>
         );

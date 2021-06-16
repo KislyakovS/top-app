@@ -16,7 +16,7 @@ interface CourseProps extends Record<string, unknown> {
 
 const firstCategory = 0;
 
-const Course: React.FC<CourseProps> = ({ menu, page, products }) => {
+const CourseAlias: React.FC<CourseProps> = ({ menu, page, products }) => {
     return (
         <></>
     );
@@ -55,4 +55,4 @@ export const getStaticProps: GetStaticProps<CourseProps> = async ({ params }: Ge
     };
 };
 
-export default withLayout(Course);
+export default withLayout(CourseAlias);
