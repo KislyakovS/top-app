@@ -1,9 +1,11 @@
-import axios from 'axios';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
+import axios from 'axios';
+
 import { MenuItem } from '../../interfaces/menu.interface';
 import { ProductModel } from '../../interfaces/product.interface';
 import { TopPageModel } from '../../interfaces/topPage.interface';
+import withLayout from '../../layout/Layout';
 
 interface CourseProps extends Record<string, unknown> {
     menu: MenuItem[],
@@ -53,4 +55,4 @@ export const getStaticProps: GetStaticProps<CourseProps> = async ({ params }: Ge
     };
 };
 
-export default Course;
+export default withLayout(Course);

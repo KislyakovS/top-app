@@ -1,7 +1,8 @@
-import withLayout from '../layout/Layout';
-import { Button, Chip, Rating } from '../components';
 import { GetStaticProps } from 'next';
 import axios from 'axios';
+
+import withLayout from '../layout/Layout';
+import { Button, Chip, Rating } from '../components';
 import { MenuItem } from '../interfaces/menu.interface';
 
 interface HomeProps extends Record<string, unknown> {
