@@ -4,21 +4,10 @@ import { useRouter } from 'next/router';
 import cls from 'clsx';
 
 import { AppContext } from '../../context/app.context';
-import { TopLevalCategory } from '../../interfaces/topPage.interface';
 import { FirstLevelMenuItem, PageItem } from '../../interfaces/menu.interface';
+import { firstLevelMenu } from '../../helpers/firstLevelMenu';
 
-import CoursesIcon from './icons/courses.svg';
-import ServisesIcon from './icons/servises.svg';
-import BooksIcon from './icons/books.svg';
-import ProductsIcon from './icons/products.svg';
 import styles from './Menu.module.css';
-
-const firstLevelMenu: FirstLevelMenuItem[] = [
-    { route: 'courses', name: 'Курсы', icon: <CoursesIcon />, id: TopLevalCategory.Courses },
-    { route: 'servises', name: 'Сервисы', icon: <ServisesIcon />, id: TopLevalCategory.Services },
-    { route: 'books', name: 'Книги', icon: <BooksIcon />, id: TopLevalCategory.Books },
-    { route: 'products', name: 'Товары', icon: <ProductsIcon />, id: TopLevalCategory.Products }
-];
 
 const Menu: React.FC = () => {
     const router = useRouter();
@@ -36,8 +25,6 @@ const Menu: React.FC = () => {
         return (
             <ul className={styles.firstLevel}>
                 {firstLevelMenu.map(menu => {
-                    const isActive = router.pathname === `/${menu.route}`;
-
                     return (
                         <li key={menu.route} className={styles.firstLevelItem}>
                             <Link href={`/${menu.route}`}>
