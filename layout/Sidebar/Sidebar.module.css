@@ -1,0 +1,8 @@
+.aside {
+	display: grid;
+	gap: 20px;
+
+	align-content: start;
+
+	padding-top: 30px;
+}

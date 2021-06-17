@@ -19,8 +19,6 @@ const Menu: React.FC = () => {
         setMenu(menu.map(m => m._id.secondCategory === category ? ({ ...m, isOpened: !m.isOpened }) : m));
     };
 
-    console.log(router);
-
     const buildFirstLevel = () => {
         return (
             <ul className={styles.firstLevel}>
