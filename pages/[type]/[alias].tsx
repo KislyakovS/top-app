@@ -7,6 +7,7 @@ import { ProductModel } from '../../interfaces/product.interface';
 import { TopLevalCategory, TopPageModel } from '../../interfaces/topPage.interface';
 import withLayout from '../../layout/Layout';
 import { firstLevelMenu } from '../../helpers/firstLevelMenu';
+import TopPage from '../../page-components/TopPage/TopPage';
 
 interface AliasProps extends Record<string, unknown> {
     menu: MenuItem[],
@@ -15,10 +16,8 @@ interface AliasProps extends Record<string, unknown> {
     products: ProductModel[]
 }
 
-const Alias: React.FC<AliasProps> = ({ menu, page, products }) => {
-    return (
-        <></>
-    );
+const Alias: React.FC<AliasProps> = (props) => {
+    return <TopPage {...props} />;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
