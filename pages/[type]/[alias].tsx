@@ -8,14 +8,14 @@ import { TopLevalCategory, TopPageModel } from '../../interfaces/topPage.interfa
 import withLayout from '../../layout/Layout';
 import { firstLevelMenu } from '../../helpers/firstLevelMenu';
 
-interface CourseProps extends Record<string, unknown> {
+interface AliasProps extends Record<string, unknown> {
     menu: MenuItem[],
     firstCategory: TopLevalCategory,
     page: TopPageModel,
     products: ProductModel[]
 }
 
-const CourseAlias: React.FC<CourseProps> = ({ menu, page, products }) => {
+const Alias: React.FC<AliasProps> = ({ menu, page, products }) => {
     return (
         <></>
     );
@@ -38,7 +38,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 };
 
-export const getStaticProps: GetStaticProps<CourseProps> = async ({ params }: GetStaticPropsContext<ParsedUrlQuery>) => {
+export const getStaticProps: GetStaticProps<AliasProps> = async ({ params }: GetStaticPropsContext<ParsedUrlQuery>) => {
     if (!params) return { notFound: true };
 
     const firstCategoryItem = firstLevelMenu.find(m => m.route === params.type);
@@ -70,4 +70,4 @@ export const getStaticProps: GetStaticProps<CourseProps> = async ({ params }: Ge
     }
 };
 
-export default withLayout(CourseAlias);
+export default withLayout(Alias);
