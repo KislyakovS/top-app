@@ -2,15 +2,16 @@ import cls from 'clsx';
 
 import { TopLevalCategory } from '../../interfaces/topPage.interface';
 import { Htag, Chip, Card } from '../../components';
-import { getPriceRu } from '../../helpers/helpers';
-
 import RateIcon from './icons/rate.svg';
+import ChackIcon from './icons/chack.svg';
+
+import { getPriceRu } from '../../helpers/helpers';
 import { TopPageProps } from './TopPage.props';
 import styles from './TopPage.module.css';
 
 
 const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
-    return <div className={styles.wrapper}>
+    return (<div>
         <div className={styles.header}>
             <Htag tag="h1">{page.title}</Htag>
             {products && <Chip color="grey" size="medium">{products.length.toString()}</Chip>}
@@ -19,7 +20,7 @@ const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
         <div>
             {products && products.map(product => <div key={product._id}>{product.title}</div>)}
         </div>
-        {firstCategory == TopLevalCategory.Courses && (
+        {firstCategory == TopLevalCategory.Courses && page.hh && (
             <div className={styles.work}>
                 <div className={styles.workTitle}>
                     <Htag tag="h2">Вакансии - {page.category}</Htag>
@@ -62,7 +63,31 @@ const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
                 </div>
             </div>
         )}
-    </div>;
+        {page.advantages && page.advantages.length > 0 && (
+            <div>
+                <Htag className={styles.advantagesTitle} tag="h2">Преимущества</Htag>
+                <div className={styles.wrapperAdvantage}>
+                    {page.advantages.map(a =>
+                        <div className={styles.advantage}>
+                            <ChackIcon />
+                            <Htag tag="h3">{a.title}</Htag>
+                            <hr />
+                            {a.description && <p className={styles.advantageDescription}>{a.description}</p>}
+                        </div>
+                    )}
+                </div>
+            </div>
+        )}
+        {page.seoText && <p>{page.seoText}</p>}
+        {page.tags && (
+            <div className={styles.skills}>
+                <Htag className={styles.skillsTitle} tag="h2">Получаемые навыки</Htag>
+                <ul className={styles.skillsList}>
+                    {page.tags.map(t => <li key={t}><Chip color="primary">{t}</Chip></li>)}
+                </ul>
+            </div>
+        )}
+    </div>);
 };
 
 export default TopPage;
