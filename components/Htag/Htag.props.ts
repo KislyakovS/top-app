@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 
-interface HtagProps {
+type DefaultElement = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+interface HtagProps extends DefaultElement {
     tag: 'h1' | 'h2' | 'h3',
     children: ReactNode
 }
