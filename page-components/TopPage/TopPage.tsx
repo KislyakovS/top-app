@@ -1,24 +1,31 @@
+import { useReducer, } from 'react';
 import cls from 'clsx';
 
 import { TopLevalCategory } from '../../interfaces/topPage.interface';
-import { Htag, Chip, Card } from '../../components';
+import { Htag, Chip, Card, Sort } from '../../components';
 import RateIcon from './icons/rate.svg';
 import ChackIcon from './icons/chack.svg';
 
+import { SortType } from '../../components/Sort/Sort.props';
 import { getPriceRu } from '../../helpers/helpers';
 import { TopPageProps } from './TopPage.props';
+import { sortReducer } from './sort.reducer';
 import styles from './TopPage.module.css';
 
 
 const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
+    const [{ sort, products: sortedProduct }, dispatchSort] = useReducer(sortReducer, { sort: SortType.rating, products });
+
+    const setSort = (type: SortType) => dispatchSort({ type });
+
     return (<div>
         <div className={styles.header}>
             <Htag tag="h1">{page.title}</Htag>
             {products && <Chip color="grey" size="medium">{products.length.toString()}</Chip>}
-            <span>Сортировка</span>
+            <Sort sort={sort} setSort={setSort} />
         </div>
         <div>
-            {products && products.map(product => <div key={product._id}>{product.title}</div>)}
+            {sortedProduct && sortedProduct.map(product => <div key={product._id}>{product.title}</div>)}
         </div>
         {firstCategory == TopLevalCategory.Courses && page.hh && (
             <div className={styles.work}>
@@ -78,7 +85,7 @@ const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
                 </div>
             </div>
         )}
-        {page.seoText && <p>{page.seoText}</p>}
+        {page.seoText && <div className={styles.seo} dangerouslySetInnerHTML={{ __html: page.seoText }} />}
         {page.tags && (
             <div className={styles.skills}>
                 <Htag className={styles.skillsTitle} tag="h2">Получаемые навыки</Htag>

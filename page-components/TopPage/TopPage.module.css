@@ -134,6 +134,37 @@
 	margin-right: 0;
 }
 
+.seo {
+	margin: 30px 0;
+}
+
+.seo h1 {
+	margin: 20px 0;
+
+	font-size: 26px;
+
+	font-weight: 500;
+	line-height: 35px;
+}
+
+.seo h2 {
+	margin: 15px 0;
+
+	font-size: 22px;
+
+	font-weight: 500;
+	line-height: 30px;
+}
+
+.seo h3 {
+	margin: 10px 0;
+
+	font-size: 20px;
+
+	font-weight: 700;
+	line-height: 27px;
+}
+
 @media screen and (max-width: 1100px) {
 	.workStatistics {
 		grid-template-columns: 1fr;
