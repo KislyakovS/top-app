@@ -1,0 +1,118 @@
+.wrapper {
+	margin-top: 40px;
+}
+
+.header {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+
+	align-items: center;
+	justify-items: start;
+	gap: 20px;
+}
+
+.workTitle {
+	display: grid;
+
+	align-items: center;
+
+	margin-bottom: 25px;
+	grid-template-columns: auto 1fr;
+	justify-items: start;
+
+	gap: 20px;
+}
+
+.workStatistics {
+	display: grid;
+
+	grid-template-columns: 1fr 3fr;
+	gap: 30px;
+}
+
+.cardCount,
+.cardSalary {
+	text-align: center;
+}
+
+.cardTitle {
+	margin: 0;
+	margin-bottom: 12px;
+
+	text-align: center;
+
+	font-weight: 300;
+}
+
+.cardLegend {
+	display: block;
+
+	margin-bottom: 10px;
+
+	font-size: 26px;
+	font-weight: bold;
+}
+
+.cardLegendPrimary {
+	color: var(--primary);
+
+	font-size: 36px;
+}
+
+.cardSalary {
+	display: grid;
+
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+
+.cardSalary > div {
+	padding-right: 20px;
+
+	border-right: 1px solid var(--gray);
+}
+
+.cardSalary > div:last-child {
+	padding-right: 0;
+
+	border-right: none;
+}
+
+.cardSalaryRate {
+	display: grid;
+	grid-template-columns: repeat(3, 20px);
+
+	justify-content: center;
+	gap: 10px;
+}
+
+.rateFill circle {
+	fill: #FC836D;
+}
+
+@media screen and (max-width: 1100px) {
+	.workStatistics {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.cardSalary {
+		grid-template-columns: 1fr;
+	}
+
+	.cardSalary > div {
+		padding: 0;
+		padding-bottom: 20px;
+
+		border-right: none;
+		border-bottom: 1px solid var(--gray);
+	}
+
+	.cardSalary > div:last-child {
+		padding: 0;
+
+		border: none;
+	}
+}
