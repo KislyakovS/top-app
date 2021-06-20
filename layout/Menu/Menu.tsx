@@ -5,7 +5,7 @@ import cls from 'clsx';
 
 import { AppContext } from '../../context/app.context';
 import { FirstLevelMenuItem, PageItem } from '../../interfaces/menu.interface';
-import { firstLevelMenu } from '../../helpers/firstLevelMenu';
+import { firstLevelMenu } from '../../helpers/helpers';
 
 import styles from './Menu.module.css';
 

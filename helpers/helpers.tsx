@@ -12,3 +12,5 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
     { route: 'books', name: 'Книги', icon: <BooksIcon />, id: TopLevalCategory.Books },
     { route: 'products', name: 'Товары', icon: <ProductsIcon />, id: TopLevalCategory.Products }
 ];
+
+export const getPriceRu = (price: number) => `${price.toLocaleString('ru')} ₽`;

@@ -6,7 +6,7 @@ import { MenuItem } from '../../interfaces/menu.interface';
 import { ProductModel } from '../../interfaces/product.interface';
 import { TopLevalCategory, TopPageModel } from '../../interfaces/topPage.interface';
 import withLayout from '../../layout/Layout';
-import { firstLevelMenu } from '../../helpers/firstLevelMenu';
+import { firstLevelMenu } from '../../helpers/helpers';
 import TopPage from '../../page-components/TopPage/TopPage';
 
 interface AliasProps extends Record<string, unknown> {

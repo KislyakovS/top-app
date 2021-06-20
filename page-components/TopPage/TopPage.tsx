@@ -2,10 +2,13 @@ import cls from 'clsx';
 
 import { TopLevalCategory } from '../../interfaces/topPage.interface';
 import { Htag, Chip, Card } from '../../components';
-import RateIcon from './icons/rate.svg';
+import { getPriceRu } from '../../helpers/helpers';
 
+import RateIcon from './icons/rate.svg';
 import { TopPageProps } from './TopPage.props';
 import styles from './TopPage.module.css';
+
+
 const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
     return <div className={styles.wrapper}>
         <div className={styles.header}>
@@ -30,7 +33,7 @@ const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
                     <Card className={styles.cardSalary}>
                         <div>
                             <p className={styles.cardTitle}>Начальный</p>
-                            <span className={styles.cardLegend}>{page.hh.juniorSalary}</span>
+                            <span className={styles.cardLegend}>{getPriceRu(page.hh.juniorSalary)}</span>
                             <div className={styles.cardSalaryRate}>
                                 <RateIcon className={styles.rateFill} />
                                 <RateIcon />
@@ -39,7 +42,7 @@ const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
                         </div>
                         <div>
                             <p className={styles.cardTitle}>Средний</p>
-                            <span className={styles.cardLegend}>{page.hh.middleSalary}</span>
+                            <span className={styles.cardLegend}>{getPriceRu(page.hh.middleSalary)}</span>
                             <div className={styles.cardSalaryRate}>
                                 <RateIcon className={styles.rateFill} />
                                 <RateIcon className={styles.rateFill} />
@@ -48,7 +51,7 @@ const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
                         </div>
                         <div>
                             <p className={styles.cardTitle}>Профессионал</p>
-                            <span className={styles.cardLegend}>{page.hh.seniorSalary}</span>
+                            <span className={styles.cardLegend}>{getPriceRu(page.hh.seniorSalary)}</span>
                             <div className={styles.cardSalaryRate}>
                                 <RateIcon className={styles.rateFill} />
                                 <RateIcon className={styles.rateFill} />
