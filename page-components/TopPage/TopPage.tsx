@@ -1,13 +1,11 @@
 import cls from 'clsx';
 
+import { TopLevalCategory } from '../../interfaces/topPage.interface';
 import { Htag, Chip, Card } from '../../components';
 import RateIcon from './icons/rate.svg';
 
 import { TopPageProps } from './TopPage.props';
 import styles from './TopPage.module.css';
-import React from 'react';
-import { TopLevalCategory } from '../../interfaces/topPage.interface';
-
 const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
     return <div className={styles.wrapper}>
         <div className={styles.header}>
