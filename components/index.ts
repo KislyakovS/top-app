@@ -5,3 +5,5 @@ export { default as Chip } from './Chip/Chip';
 export { default as Rating } from './Rating/Rating';
 export { default as Card } from './Card/Card';
 export { default as Sort } from './Sort/Sort';
+export { default as Input } from './Input/Input';
+export { default as Textarea } from './Textarea/Textarea';
