@@ -2,7 +2,7 @@ import { useReducer, } from 'react';
 import cls from 'clsx';
 
 import { TopLevalCategory } from '../../interfaces/topPage.interface';
-import { Htag, Chip, Card, Sort } from '../../components';
+import { Htag, Chip, Card, Sort, Product } from '../../components';
 import RateIcon from './icons/rate.svg';
 import ChackIcon from './icons/chack.svg';
 
@@ -25,7 +25,7 @@ const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
             <Sort sort={sort} setSort={setSort} />
         </div>
         <div>
-            {sortedProduct && sortedProduct.map(product => <div key={product._id}>{product.title}</div>)}
+            {sortedProduct && sortedProduct.map(product => <Product key={product._id} product={product} />)}
         </div>
         {firstCategory == TopLevalCategory.Courses && page.hh && (
             <div className={styles.work}>
