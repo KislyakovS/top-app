@@ -1,3 +1,4 @@
+import cls from 'clsx';
 import Image from 'next/image';
 
 import { Button, Card, Chip, Rating, Separator } from '..';
@@ -42,7 +43,7 @@ const Product: React.FC<ProductProps> = ({ product, className, ...props }) => {
                 <p>{product.disadvantages}</p>
             </div>}
         </div>
-        <Separator className={styles.hr} />
+        <Separator className={cls(styles.hr, styles.hrSecondary)} />
         <div className={styles.actions}>
             <Button>Узнать подробнее</Button>
             <Button className={styles.reviewButton} arrow='right' apperance='ghost'>Читать отзывы</Button>

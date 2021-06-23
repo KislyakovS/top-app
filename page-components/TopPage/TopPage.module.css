@@ -177,6 +177,10 @@
 }
 
 @media screen and (max-width: 640px) {
+	.header {
+		grid-template-columns: auto 1fr;
+	}
+
 	.cardSalary {
 		grid-template-columns: 1fr;
 	}
