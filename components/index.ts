@@ -9,3 +9,4 @@ export { default as Input } from './Input/Input';
 export { default as Textarea } from './Textarea/Textarea';
 export { default as Search } from './Search/Search';
 export { default as Product } from './Product/Product';
+export { default as Separator } from './Separator/Separator';
