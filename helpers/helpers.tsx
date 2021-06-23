@@ -14,3 +14,8 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
 ];
 
 export const getPriceRu = (price: number) => `${price.toLocaleString('ru')} ₽`;
+
+export const devOfNum = (number: number, title: [string, string, string]): string => {
+    const cases = [2, 0, 1, 1, 1, 2];
+    return title[(number % 100 > 4 && number % 100 < 200) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]]
+}
