@@ -75,7 +75,7 @@ const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
                 <Htag className={styles.advantagesTitle} tag="h2">Преимущества</Htag>
                 <div className={styles.wrapperAdvantage}>
                     {page.advantages.map(a =>
-                        <div className={styles.advantage}>
+                        <div key={a._id} className={styles.advantage}>
                             <ChackIcon />
                             <Htag tag="h3">{a.title}</Htag>
                             <hr />

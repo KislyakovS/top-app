@@ -1,4 +1,4 @@
-import cls from 'clsx';
+import Image from 'next/image';
 
 import { Button, Card, Chip, Rating, Separator } from '..';
 import { getPriceRu, devOfNum } from '../../helpers/helpers';
@@ -8,7 +8,7 @@ import styles from './Product.module.css';
 
 const Product: React.FC<ProductProps> = ({ product, className, ...props }) => {
     return <Card className={styles.product}>
-        <div className={styles.logo}><img src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} /></div>
+        <div className={styles.logo}><Image width={70} height={70} src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} /></div>
         <div className={styles.title}>{product.title}</div>
         <div className={styles.price}>
             {getPriceRu(product.price)}
