@@ -114,11 +114,12 @@
 }
 
 .skillsTitle {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .skillsList {
 	display: flex;
+	flex-wrap: wrap;
 
 	margin: 0;
 	padding: 0;
@@ -127,6 +128,7 @@
 }
 
 .skillsList li {
+	margin-top: 10px;
 	margin-right: 10px;
 }
 

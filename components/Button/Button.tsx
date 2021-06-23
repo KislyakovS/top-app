@@ -9,8 +9,7 @@ const Button: React.FC<ButtonProps> = ({ apperance = 'primary', arrow = 'none', 
     const buttonClasses = cls(
         styles.button,
         className,
-        apperance === 'primary' && styles.primary,
-        apperance === 'ghost' && styles.ghost
+        styles[apperance]
     );
 
     const arrowClasses = cls(
