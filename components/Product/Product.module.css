@@ -1,0 +1,195 @@
+.product {
+	display: grid;
+
+	margin-bottom: 30px;
+
+	padding: 30px;
+	grid-template-columns: [start] 70px [logoend] 30px [titlestart] calc(50% - 100px) [middle] 1fr [pricestart] auto [priceend] 40px [creditstart] auto [creditend] 40px [ratingstart] auto [end];
+}
+
+.logo {
+	grid-column: start / logoend;
+	grid-row: 1 / span 2;
+}
+
+.logo img {
+	border-radius: 5px;
+}
+
+.title,
+.tags {
+	grid-column: titlestart / middle;
+}
+
+.title {
+	align-self: flex-end;
+
+	color: var(--black);
+
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 27px;
+}
+
+.tags {
+	margin-top: 5px;
+}
+
+.tags div {
+	margin-right: 5px;
+}
+
+.price,
+.priceLabel {
+	grid-column: pricestart / priceend;
+}
+
+.credit,
+.creditLabel {
+	grid-column: creditstart / creditend;
+}
+
+.rating,
+.ratingLabel {
+	grid-column: ratingstart / end;
+}
+
+.price,
+.credit {
+	color: var(--black);
+
+	font-size: 20px;
+	font-weight: normal;
+}
+
+.price,
+.credit,
+.rating {
+	align-self: flex-end;
+}
+
+.priceLabel,
+.creditLabel,
+.ratingLabel,
+.creditSuffix {
+	color: var(--black);
+
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 19px;
+}
+
+.discount {
+	margin-left: 10px;
+}
+
+.hr,
+.actions,
+.description {
+	grid-column: start / end;
+}
+
+.feature {
+	grid-column: start / middle;
+}
+
+.advBlock {
+	grid-column: middle / end;
+}
+
+.hr {
+	margin: 20px 0;
+}
+
+.description {
+	margin-bottom: 15px;
+
+	color: var(--black);
+
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 24px;
+}
+
+.reviewButton {
+	margin-left: 20px;
+}
+
+.disadvantages {
+	margin-top: 20px;
+}
+
+.advantages,
+.disadvantages {
+	position: relative;
+
+	padding-left: 18px;
+}
+
+.advTitle {
+	margin-bottom: 5px;
+
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 22px;
+}
+
+.advantages p,
+.disadvantages p {
+	margin: 0;
+
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 22px;
+}
+
+.advantages::after,
+.disadvantages::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 3px;
+	height: 100%;
+
+	content: "";
+
+	border-radius: 2px;
+}
+
+.advantages::after {
+	background-color: var(--green);
+}
+
+.disadvantages::after {
+	background-color: var(--red);
+}
+
+.characteristic {
+	display: grid;
+
+	margin-bottom: 10px;
+	padding-right: 60px;
+	grid-template-columns: auto 1fr auto;
+	gap: 15px;
+}
+
+.characteristicName {
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 18px;
+}
+
+.characteristicValue {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 18px;
+}
+
+.characteristicDots {
+	border-bottom: 1px dotted #C4C4C4;
+}
+
+.chipJob {
+	margin-top: 5px;
+}

@@ -22,7 +22,7 @@ export interface ProductModel {
     credit: number;
     oldPrice: number;
     description: string;
-    characteristica: Charteristic[];
+    characteristics: Charteristic[];
     createdAt: Date;
     updatedAt: Date;
     image: string;
