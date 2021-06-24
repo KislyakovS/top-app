@@ -6,7 +6,7 @@ import styles from './Card.module.css';
 const Card: React.FC<CardProps> = ({ className, color = 'white', sizePadding = 'medium', children, ...props }) => {
     const cardClasses = cls(
         styles.card,
-        color === 'grey' && styles.cardGray,
+        color === 'grey' && styles.colorGray,
         sizePadding === 'big' && styles.cardPaddingBig,
         className
     );
