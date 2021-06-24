@@ -14,6 +14,7 @@ const Button: React.FC<ButtonProps> = ({ apperance = 'primary', arrow = 'none', 
 
     const arrowClasses = cls(
         styles.arrow,
+        styles[arrow]
     );
 
     return (
