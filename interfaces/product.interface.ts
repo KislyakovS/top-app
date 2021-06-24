@@ -3,7 +3,7 @@ interface Charteristic {
     name: string;
 }
 
-interface ReviewModel {
+export interface ReviewModel {
     _id: string;
     name: string;
     title: string;
