@@ -2,7 +2,7 @@ import { useState } from 'react';
 import cls from 'clsx';
 import Image from 'next/image';
 
-import { Button, Card, Chip, Rating, Separator, Review } from '..';
+import { Button, Card, Chip, Rating, Separator, Review, ReviewForm } from '..';
 import { getPriceRu, devOfNum } from '../../helpers/helpers';
 
 import { ProductProps } from './Product.props';
@@ -55,6 +55,8 @@ const Product: React.FC<ProductProps> = ({ product, className, ...props }) => {
         </Card>
         <Card color="grey" className={cls(styles.reviews, isReviewOpenend ? styles.opened : styles.closed)}>
             {product.reviews.map(r => <Review key={r._id} review={r} className={styles.review} />)}
+            <Separator className={cls(styles.hr, styles.hrSecondary)} />
+            <ReviewForm productId={product._id} />
         </Card>
     </>;
 };
