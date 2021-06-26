@@ -1,4 +1,4 @@
-import React, { useState, KeyboardEvent } from 'react';
+import { useState, KeyboardEvent, forwardRef } from 'react';
 import cls from 'clsx';
 
 import StarIcon from './star.svg';
@@ -10,7 +10,7 @@ const BASE_COUNT_RATINGS = 5;
 
 const RADING_LIST = new Array(BASE_COUNT_RATINGS).fill(1);
 
-const Rating: React.FC<RatingProps> = ({ className, isEditable = false, rating, setRating, ...props }) => {
+const Rating = forwardRef<HTMLUListElement, RatingProps>(({ className, isEditable = false, rating, setRating, ...props }) => {
     const [currentRating, setCurrentRating] = useState(rating);
 
     const onClickItemStar = (rating: number) => {
@@ -55,7 +55,7 @@ const Rating: React.FC<RatingProps> = ({ className, isEditable = false, rating, 
                 );
             })}
         </ul>
-    )
-};
+    );
+});
 
 export default Rating;
