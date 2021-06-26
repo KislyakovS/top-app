@@ -29,7 +29,7 @@ const Product: React.FC<ProductProps> = ({ product, className, ...props }) => {
             <div className={styles.description}>{product.description}</div>
             <div className={styles.feature}>
                 {product.characteristics.map((c) => (
-                    <div className={styles.characteristic}>
+                    <div key={c.name} className={styles.characteristic}>
                         <span className={styles.characteristicName}>{c.name}</span>
                         <span className={styles.characteristicDots}></span>
                         <span className={styles.characteristicValue}>{c.value}</span>

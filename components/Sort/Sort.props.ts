@@ -4,7 +4,7 @@ type DefaultElement = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivE
 
 export enum SortType {
     rating,
-    price
+    price,
 }
 
 export interface SortProps extends DefaultElement {

@@ -4,10 +4,9 @@ import { useRouter } from 'next/router';
 import { Button, Input } from '..';
 import SearchIcon from './icons/search.svg';
 
-import { SearchProps } from './Search.props';
 import styles from './Search.module.css';
 
-const Search: React.FC<SearchProps> = () => {
+const Search: React.FC = () => {
     const [search, setSearch] = useState("");
     const router = useRouter();
 

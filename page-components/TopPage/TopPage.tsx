@@ -1,4 +1,4 @@
-import { useReducer, } from 'react';
+import { useEffect, useReducer, } from 'react';
 import cls from 'clsx';
 
 import { TopLevalCategory } from '../../interfaces/topPage.interface';
@@ -17,6 +17,11 @@ const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
     const [{ sort, products: sortedProduct }, dispatchSort] = useReducer(sortReducer, { sort: SortType.rating, products });
 
     const setSort = (type: SortType) => dispatchSort({ type });
+
+    useEffect(() => {
+        dispatchSort({ type: 'update', payload: products });
+    }, [products]);
+
 
     return (<div>
         <div className={styles.header}>

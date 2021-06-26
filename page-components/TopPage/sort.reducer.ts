@@ -1,7 +1,7 @@
 import { SortType } from '../../components/Sort/Sort.props';
 import { ProductModel } from '../../interfaces/product.interface';
 
-export type SortAction = { type: SortType.price } | { type: SortType.rating };
+export type SortAction = { type: SortType.price } | { type: SortType.rating } | { type: 'update', payload: ProductModel[] };
 
 export interface SortReducerState {
     sort: SortType;
@@ -20,6 +20,10 @@ export const sortReducer = (state: SortReducerState, action: SortAction): SortRe
                 sort: SortType.price,
                 products: state.products.sort((a, b) => b.price - a.price)
             };
+        case 'update':
+            return {
+                ...state, products: action.payload,
+            }
         default:
             return state;
     }
