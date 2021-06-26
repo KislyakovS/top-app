@@ -54,8 +54,6 @@ export const getStaticProps: GetStaticProps<AliasProps> = async ({ params }: Get
             limit: 10,
         });
 
-        console.log(page.category, products.length)
-
         return {
             props: {
                 menu,
