@@ -10,7 +10,7 @@ const BASE_COUNT_RATINGS = 5;
 
 const RADING_LIST = new Array(BASE_COUNT_RATINGS).fill(1);
 
-const Rating = forwardRef<HTMLUListElement, RatingProps>(({ className, isEditable = false, rating, setRating, ...props }) => {
+const Rating = forwardRef<HTMLUListElement, RatingProps>(({ className, error, isEditable = false, rating, setRating, ...props }) => {
     const [currentRating, setCurrentRating] = useState(rating);
 
     const onClickItemStar = (rating: number) => {
@@ -38,23 +38,26 @@ const Rating = forwardRef<HTMLUListElement, RatingProps>(({ className, isEditabl
     };
 
     return (
-        <ul className={cls(styles.rating, className)} {...props}>
-            {RADING_LIST.map((_, i) => {
-                return (
-                    <li className={cls(styles.item, isEditable && styles.item_editable)} key={i}
-                        onMouseEnter={() => onHoverItemStar(i + 1)}
-                        onMouseLeave={onLeaveItemStar}
-                        onClick={() => onClickItemStar(i + 1)}
-                    >
-                        <StarIcon
-                            className={cls(styles.start, i < currentRating && styles.filled)}
-                            tabIndex={isEditable ? 0 : -1}
-                            onKeyDown={(e) => onKeyDownItemStar(e, i + 1)}
-                        />
-                    </li>
-                );
-            })}
-        </ul>
+        <div className={cls(styles.wrapper, className)}>
+            <ul className={cls(styles.rating, error && styles.error)} {...props}>
+                {RADING_LIST.map((_, i) => {
+                    return (
+                        <li className={cls(styles.item, isEditable && styles.item_editable)} key={i}
+                            onMouseEnter={() => onHoverItemStar(i + 1)}
+                            onMouseLeave={onLeaveItemStar}
+                            onClick={() => onClickItemStar(i + 1)}
+                        >
+                            <StarIcon
+                                className={cls(styles.start, i < currentRating && styles.filled)}
+                                tabIndex={isEditable ? 0 : -1}
+                                onKeyDown={(e) => onKeyDownItemStar(e, i + 1)}
+                            />
+                        </li>
+                    );
+                })}
+            </ul>
+            {error && <span className={styles.errorMessage}>{error.message}</span>}
+        </div>
     );
 });
 
