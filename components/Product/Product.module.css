@@ -54,6 +54,10 @@
 	grid-column: ratingstart / end;
 }
 
+.ratingLabel a {
+	color: var(--primary);
+}
+
 .price,
 .credit {
 	color: var(--black);

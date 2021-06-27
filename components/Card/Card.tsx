@@ -2,8 +2,9 @@ import cls from 'clsx';
 
 import { CardProps } from './Card.props';
 import styles from './Card.module.css';
+import { forwardRef } from 'react';
 
-const Card: React.FC<CardProps> = ({ className, color = 'white', sizePadding = 'medium', children, ...props }) => {
+const Card = forwardRef<HTMLDivElement, CardProps>(({ className, color = 'white', sizePadding = 'medium', children, ...props }, ref) => {
     const cardClasses = cls(
         styles.card,
         color === 'grey' && styles.colorGray,
@@ -11,7 +12,7 @@ const Card: React.FC<CardProps> = ({ className, color = 'white', sizePadding = '
         className
     );
 
-    return <section className={cardClasses} {...props}>{children}</section>;
-};
+    return <section ref={ref} className={cardClasses} {...props}>{children}</section>;
+});
 
 export default Card;

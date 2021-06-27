@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import cls from 'clsx';
 import Image from 'next/image';
 
@@ -8,10 +8,19 @@ import { getPriceRu, devOfNum } from '../../helpers/helpers';
 import { ProductProps } from './Product.props';
 import styles from './Product.module.css';
 
-const Product: React.FC<ProductProps> = ({ product, className, ...props }) => {
+const Product: React.FC<ProductProps> = ({ product, ...props }) => {
     const [isReviewOpenend, setIsReviewOpenend] = useState(false);
+    const reviewRef = useRef<HTMLDivElement>(null);
 
-    return <>
+    const scrollToReview = useCallback(() => {
+        setIsReviewOpenend(true);
+        reviewRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+    }, []);
+
+    return <div {...props}>
         <Card className={styles.product}>
             <div className={styles.logo}><Image width={70} height={70} src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} /></div>
             <div className={styles.title}>{product.title}</div>
@@ -24,7 +33,7 @@ const Product: React.FC<ProductProps> = ({ product, className, ...props }) => {
             <div className={styles.tags}>{product.categories.map(c => <Chip key={c} color='ghost'>{c}</Chip>)}</div>
             <div className={styles.priceLabel}>цена</div>
             <div className={styles.creditLabel}>кредит</div>
-            <div className={styles.ratingLabel}>{product.reviewCount} {devOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</div>
+            <div className={styles.ratingLabel}><a href='#ref' onClick={scrollToReview}>{product.reviewCount} {devOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</a></div>
             <Separator className={styles.hr} />
             <div className={styles.description}>{product.description}</div>
             <div className={styles.feature}>
@@ -53,12 +62,12 @@ const Product: React.FC<ProductProps> = ({ product, className, ...props }) => {
                 <Button className={styles.reviewButton} arrow={isReviewOpenend ? 'down' : 'right'} apperance='ghost' onClick={() => setIsReviewOpenend(!isReviewOpenend)}>Читать отзывы</Button>
             </div>
         </Card>
-        <Card color="grey" className={cls(styles.reviews, isReviewOpenend ? styles.opened : styles.closed)}>
+        <Card color="grey" className={cls(styles.reviews, isReviewOpenend ? styles.opened : styles.closed)} ref={reviewRef}>
             {product.reviews.map(r => <Review key={r._id} review={r} className={styles.review} />)}
             <Separator className={cls(styles.hr, styles.hrSecondary)} />
             <ReviewForm productId={product._id} />
         </Card>
-    </>;
+    </div>;
 };
 
 export default Product;
