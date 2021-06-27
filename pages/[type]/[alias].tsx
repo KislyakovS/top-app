@@ -55,6 +55,8 @@ export const getStaticProps: GetStaticProps<AliasProps> = async ({ params }: Get
             limit: 10,
         });
 
+        if (!products) return { notFound: true };
+
         return {
             props: {
                 menu,

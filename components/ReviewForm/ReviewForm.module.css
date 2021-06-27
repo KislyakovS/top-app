@@ -33,7 +33,7 @@
 	margin-left: 15px;
 }
 
-.success {
+.panel {
 	position: relative;
 
 	margin-top: 20px;
@@ -41,7 +41,10 @@
 	padding: 20px;
 
 	border-radius: 5px;
-	background-color: var(--green-lite);
+}
+
+.success {
+	background-color: var(--green-light);
 }
 
 .successTitle {
@@ -50,7 +53,7 @@
 	font-weight: bold;
 }
 
-.successClose {
+.panelClose {
 	position: absolute;
 
 	top: 10px;
@@ -58,8 +61,20 @@
 
 	padding: 0;
 
+	cursor: pointer;
+
 	border: none;
 	background-color: transparent;
+}
+
+.error {
+	color: var(--red);
+
+	background-color: var(--red-light);
+}
+
+.errorClose svg {
+	stroke: var(--red);
 }
 
 @media screen and (max-width: 1100px) {

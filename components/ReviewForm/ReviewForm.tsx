@@ -1,19 +1,43 @@
+import { useCallback, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import axios from 'axios';
 import cls from 'clsx';
 
 import { Input, Textarea, Rating, Button } from '..';
 import CrossIcon from './icons/cross.svg';
 
-import { IReviewForm } from './ReviewForm.inderface';
+import { IReviewForm, IReviewSentResponse } from './ReviewForm.inderface';
 import { ReviewFormProps } from './ReviewForm.props';
 import styles from './ReviewForm.module.css';
+import { API } from '../../helpers/api';
 
 const ReviewForm: React.FC<ReviewFormProps> = ({ productId, className, ...props }) => {
-    const { register, control, handleSubmit, formState: { errors } } = useForm<IReviewForm>();
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [error, setError] = useState('');
+    const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>();
 
-    const onSubmit = (data: IReviewForm) => {
-        console.log(data);
+    const onSubmit = async (formData: IReviewForm) => {
+        setError('');
+        try {
+            const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
+            if (data.message) {
+                setIsSuccess(true);
+                reset();
+            } else {
+                setError('Что-то пошло не так');
+            }
+        } catch (error) {
+            setError(error.message);
+        }
     };
+
+    const onClickCloseSuccess = useCallback(() => {
+        setIsSuccess(false);
+    }, [setIsSuccess]);
+
+    const onClickCloseError = useCallback(() => {
+        setError('');
+    }, [setError]);
 
     return <form onSubmit={handleSubmit(onSubmit)}>
         <div className={cls(styles.form, className)} {...props}>
@@ -34,13 +58,17 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId, className, ...props 
                 <span className={styles.submitLegend}>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
             </div>
         </div>
-        <div className={styles.success}>
+        {isSuccess && <div className={cls(styles.success, styles.panel)}>
             <div className={styles.successTitle}>Ваш отзыв отправлен</div>
             <div className={styles.successMessage}>
                 Спасибо, ваш отзыв будет опубликован после проверки
             </div>
-            <button className={styles.successClose}><CrossIcon /></button>
-        </div>
+            <button className={styles.panelClose} onClick={onClickCloseSuccess}><CrossIcon /></button>
+        </div>}
+        {error && <div className={cls(styles.error, styles.panel)}>
+            {error}
+            <button className={cls(styles.panelClose, styles.errorClose)} onClick={onClickCloseError}><CrossIcon /></button>
+        </div>}
     </form>;
 };
 
