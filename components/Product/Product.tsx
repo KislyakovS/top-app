@@ -65,7 +65,7 @@ const Product: React.FC<ProductProps> = ({ product, ...props }) => {
         <Card color="grey" className={cls(styles.reviews, isReviewOpenend ? styles.opened : styles.closed)} ref={reviewRef}>
             {product.reviews.map(r => <Review key={r._id} review={r} className={styles.review} />)}
             <Separator className={cls(styles.hr, styles.hrSecondary)} />
-            <ReviewForm productId={product._id} />
+            {isReviewOpenend && <ReviewForm productId={product._id} />}
         </Card>
     </div>;
 };

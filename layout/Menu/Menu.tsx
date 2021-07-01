@@ -55,9 +55,9 @@ const Menu: React.FC = () => {
 
                     return (
                         <li key={category} className={styles.secondLevelItem}>
-                            <span className={styles.secondLevelLink} onClick={() => openSecondLevelMenu(category)}>{category}</span>
+                            <button className={styles.secondLevelLink} onClick={() => openSecondLevelMenu(category)}>{category}</button>
                             <div className={cls(styles.secondLevelSubmenu, m.isOpened && styles.opened)}>
-                                {buildThirdLevel(m.pages, firstMenu.route)}
+                                {buildThirdLevel(m.pages, firstMenu.route, m.isOpened ?? false)}
                             </div>
                         </li>
                     );
@@ -66,7 +66,7 @@ const Menu: React.FC = () => {
         );
     };
 
-    const buildThirdLevel = (pages: PageItem[], route: string) => {
+    const buildThirdLevel = (pages: PageItem[], route: string, isOpened) => {
         return (
             <ul className={styles.thirdLevel}>
                 {pages.map(page => {
@@ -75,7 +75,7 @@ const Menu: React.FC = () => {
                     return (
                         <li key={page._id} className={styles.thirdLevelItem}>
                             <Link href={`/${route}/${page.alias}`}>
-                                <a className={cls(
+                                <a tabIndex={isOpened ? 0 : -1} className={cls(
                                     styles.thirdLevelLink,
                                     isActive && styles.active
                                 )}

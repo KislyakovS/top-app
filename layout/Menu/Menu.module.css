@@ -67,10 +67,15 @@
 }
 
 .secondLevelLink {
+	margin-bottom: 0;
+	padding: 0;
+
 	cursor: pointer;
 	text-transform: uppercase;
 
 	color: var(--gray-dark);
+	border: none;
+	background-color: transparent;
 
 	font-size: 12px;
 	font-weight: 300;
