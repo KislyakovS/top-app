@@ -1,4 +1,5 @@
 import { useEffect, useReducer, } from 'react';
+import Head from 'next/head';
 import cls from 'clsx';
 
 import { TopLevalCategory } from '../../interfaces/topPage.interface';
@@ -24,6 +25,9 @@ const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
 
 
     return (<div>
+        <Head>
+            <title>{page.title}</title>
+        </Head>
         <div className={styles.header}>
             <Htag tag="h1">{page.title}</Htag>
             {products && <Chip color="grey" size="medium">{products.length.toString()}</Chip>}

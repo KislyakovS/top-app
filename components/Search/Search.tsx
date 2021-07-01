@@ -24,7 +24,7 @@ const Search: React.FC = () => {
 
     return <div className={styles.search}>
         <Input className={styles.input} placeholder="Поиск..." value={search} onChange={onChangeSearch} onKeyDown={onKeyDownSearch} />
-        <Button className={styles.button} onClick={goToSearch}><SearchIcon /></Button>
+        <Button className={styles.button} onClick={goToSearch} aria-label="Поиск"><SearchIcon /></Button>
     </div>;
 };
 
