@@ -1,4 +1,4 @@
-import { useState, KeyboardEvent, forwardRef } from 'react';
+import { useState, KeyboardEvent, forwardRef, useRef } from 'react';
 import cls from 'clsx';
 
 import StarIcon from './star.svg';
@@ -12,6 +12,7 @@ const RADING_LIST = new Array(BASE_COUNT_RATINGS).fill(1);
 
 const Rating = forwardRef<HTMLUListElement, RatingProps>(({ className, error, isEditable = false, rating, setRating, ...props }) => {
     const [currentRating, setCurrentRating] = useState(rating);
+    const itemsRating = useRef<(HTMLElement | null)[]>([]);
 
     const onClickItemStar = (rating: number) => {
         if (setRating && isEditable) {
@@ -31,10 +32,22 @@ const Rating = forwardRef<HTMLUListElement, RatingProps>(({ className, error, is
         }
     };
 
-    const onKeyDownItemStar = (e: KeyboardEvent<SVGElement>, rating: number) => {
-        if (e.code === 'Space' && setRating && isEditable) {
-            setRating(rating);
+    const onKeyDownItemStar = (e: KeyboardEvent<HTMLElement>, rating: number) => {
+        if (!setRating || !isEditable) return;
+
+        let calcRating = rating;
+
+        if (e.code === 'ArrowLeft') {
+            itemsRating.current[rating - 1]?.focus();
         }
+
+        if (e.code === 'ArrowRight') {
+            itemsRating.current[rating + 1]?.focus();
+            calcRating += 1;
+        }
+
+        setRating(calcRating);
+        setCurrentRating(calcRating);
     };
 
     return (
@@ -46,11 +59,12 @@ const Rating = forwardRef<HTMLUListElement, RatingProps>(({ className, error, is
                             onMouseEnter={() => onHoverItemStar(i + 1)}
                             onMouseLeave={onLeaveItemStar}
                             onClick={() => onClickItemStar(i + 1)}
+                            tabIndex={isEditable ? 0 : -1}
+                            onKeyDown={(e) => onKeyDownItemStar(e, i)}
+                            ref={(r) => itemsRating.current[i] = r}
                         >
                             <StarIcon
                                 className={cls(styles.start, i < currentRating && styles.filled)}
-                                tabIndex={isEditable ? 0 : -1}
-                                onKeyDown={(e) => onKeyDownItemStar(e, i + 1)}
                             />
                         </li>
                     );
