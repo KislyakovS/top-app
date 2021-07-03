@@ -22,10 +22,10 @@ const Search: React.FC = () => {
         router.push(`/search?q=${search}`);
     };
 
-    return <div className={styles.search}>
+    return <form className={styles.search} role="search">
         <Input className={styles.input} placeholder="Поиск..." value={search} onChange={onChangeSearch} onKeyDown={onKeyDownSearch} />
-        <Button className={styles.button} onClick={goToSearch} aria-label="Искать по сайту"><SearchIcon /></Button>
-    </div>;
+        <Button type="button" className={styles.button} onClick={goToSearch} aria-label="Искать по сайту"><SearchIcon /></Button>
+    </form>;
 };
 
 export default Search;
