@@ -66,7 +66,7 @@ const Rating = forwardRef<HTMLUListElement, RatingProps>(({ className, error, is
                             aria-label={isEditable ? 'укажите рейтинг стрелками влево или вправо' : `рейтинг ${rating}`}
                             aria-valuemin={0}
                             aria-valuenow={rating}
-                            aria-valumax={BASE_COUNT_RATINGS}
+                            aria-valuemax={BASE_COUNT_RATINGS}
                             aria-invalid={error ? true : false}
                         >
                             <StarIcon

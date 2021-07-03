@@ -73,16 +73,16 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId, className, ...props 
                 <span className={styles.submitLegend}>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
             </div>
         </div>
-        {isSuccess && <div className={cls(styles.success, styles.panel)}>
+        {isSuccess && <div role="alert" className={cls(styles.success, styles.panel)}>
             <div className={styles.successTitle}>Ваш отзыв отправлен</div>
             <div className={styles.successMessage}>
                 Спасибо, ваш отзыв будет опубликован после проверки
             </div>
-            <button className={styles.panelClose} onClick={onClickCloseSuccess}><CrossIcon /></button>
+            <Button className={styles.panelClose} onClick={onClickCloseSuccess} aria-label="Закрыть сообщение об успешной отправки"><CrossIcon /></Button>
         </div>}
-        {error && <div className={cls(styles.error, styles.panel)}>
+        {error && <div role="alert" className={cls(styles.error, styles.panel)}>
             {error}
-            <button className={cls(styles.panelClose, styles.errorClose)} onClick={onClickCloseError}><CrossIcon /></button>
+            <Button className={cls(styles.panelClose, styles.errorClose)} onClick={onClickCloseError} aria-label="Закрыть сообщение об ошибке при отправки"><CrossIcon /></Button>
         </div>}
     </form>;
 };
