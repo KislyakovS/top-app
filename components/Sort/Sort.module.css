@@ -2,6 +2,10 @@
 	display: flex;
 }
 
+.sortTitle {
+	display: none;
+}
+
 .sortItem {
 	display: flex;
 

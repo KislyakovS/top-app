@@ -30,7 +30,7 @@ const TopPage: React.FC<TopPageProps> = ({ firstCategory, page, products }) => {
         </Head>
         <div className={styles.header}>
             <Htag tag="h1">{page.title}</Htag>
-            {products && <Chip color="grey" size="medium">{products.length.toString()}</Chip>}
+            {products && <Chip color="grey" size="medium" aria-label={`${products.length} элементов`}>{products.length.toString()}</Chip>}
             <Sort sort={sort} setSort={setSort} />
         </div>
         <div>
