@@ -25,14 +25,21 @@ const Product: React.FC<ProductProps> = ({ product, ...props }) => {
             <div className={styles.logo}><Image width={70} height={70} src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} /></div>
             <div className={styles.title}>{product.title}</div>
             <div className={styles.price}>
-                {getPriceRu(product.price)}
-                {product.oldPrice && <Chip className={styles.discount} color='green'>{getPriceRu(product.price - product.oldPrice)}</Chip>}
+                <span className="visuallyHidden">цена</span> {getPriceRu(product.price)}
+                {product.oldPrice && <Chip className={styles.discount} color='green'><span className="visuallyHidden">скидка</span> {getPriceRu(product.price - product.oldPrice)}</Chip>}
             </div>
-            <div className={styles.credit}>{getPriceRu(product.credit)}<span className={styles.creditSuffix}>/мес</span></div>
-            <div className={styles.rating}><Rating rating={product.initialRating} /></div>
+            <div className={styles.credit}>
+                <span className="visuallyHidden">кредит в месяц</span>
+                {getPriceRu(product.credit)}
+                <span aria-hidden={true} className={styles.creditSuffix}>/мес</span>
+            </div>
+            <div className={styles.rating}>
+                <span className="visuallyHidden">{`рейтинг - ${product.initialRating}`}</span>
+                <Rating rating={product.initialRating} />
+            </div>
             <div className={styles.tags}>{product.categories.map(c => <Chip key={c} color='ghost'>{c}</Chip>)}</div>
-            <div className={styles.priceLabel}>цена</div>
-            <div className={styles.creditLabel}>кредит</div>
+            <div className={styles.priceLabel} aria-hidden={true}>цена</div>
+            <div className={styles.creditLabel} aria-hidden={true}>кредит</div>
             <div className={styles.ratingLabel}><a href='#ref' onClick={scrollToReview}>{product.reviewCount} {devOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</a></div>
             <Separator className={styles.hr} />
             <div className={styles.description}>{product.description}</div>

@@ -20,6 +20,15 @@ a {
 	box-sizing: border-box;
 }
 
+.visuallyHidden {
+	position: absolute;
+
+	overflow: hidden;
+
+	width: 0;
+	height: 0;
+}
+
 :root {
 	--black: #3B434E;
 	--white: #FFF;
