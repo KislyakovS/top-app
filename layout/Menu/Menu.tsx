@@ -66,7 +66,7 @@ const Menu: React.FC = () => {
         );
     };
 
-    const buildThirdLevel = (pages: PageItem[], route: string, isOpened) => {
+    const buildThirdLevel = (pages: PageItem[], route: string, isOpened: boolean) => {
         return (
             <ul className={styles.thirdLevel}>
                 {pages.map(page => {
