@@ -66,7 +66,15 @@ const Product: React.FC<ProductProps> = ({ product, ...props }) => {
             <Separator className={cls(styles.hr, styles.hrSecondary)} />
             <div className={styles.actions}>
                 <Button>Узнать подробнее</Button>
-                <Button className={styles.reviewButton} arrow={isReviewOpenend ? 'down' : 'right'} apperance='ghost' onClick={() => setIsReviewOpenend(!isReviewOpenend)}>Читать отзывы</Button>
+                <Button
+                    className={styles.reviewButton}
+                    arrow={isReviewOpenend ? 'down' : 'right'}
+                    apperance='ghost'
+                    onClick={() => setIsReviewOpenend(!isReviewOpenend)}
+                    aria-expected={isReviewOpenend}
+                >
+                    Читать отзывы
+                </Button>
             </div>
         </Card>
         <Card color="grey" className={cls(styles.reviews, isReviewOpenend ? styles.opened : styles.closed)} ref={reviewRef}>

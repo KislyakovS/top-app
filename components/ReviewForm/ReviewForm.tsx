@@ -14,7 +14,7 @@ import { API } from '../../helpers/api';
 const ReviewForm: React.FC<ReviewFormProps> = ({ productId, className, ...props }) => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState('');
-    const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>();
+    const { register, control, handleSubmit, formState: { errors }, reset, clearErrors } = useForm<IReviewForm>();
 
     const onSubmit = async (formData: IReviewForm) => {
         setError('');
@@ -41,8 +41,16 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId, className, ...props 
 
     return <form onSubmit={handleSubmit(onSubmit)}>
         <div className={cls(styles.form, className)} {...props}>
-            <Input {...register('name', { required: { value: true, message: 'Укажите имя' } })} error={errors.name} placeholder="Имя" />
-            <Input {...register('title', { required: { value: true, message: 'Укажите заголовок' } })} error={errors.title} placeholder="Заголовок отзыва" />
+            <Input
+                {...register('name', { required: { value: true, message: 'Укажите имя' } })}
+                error={errors.name} placeholder="Имя"
+                aria-invalid={errors.name ? true : false}
+            />
+            <Input
+                {...register('title', { required: { value: true, message: 'Укажите заголовок' } })}
+                error={errors.title} placeholder="Заголовок отзыва"
+                aria-invalid={errors.title ? true : false}
+            />
             <div className={styles.estimation}>
                 <span className={styles.estimationLabel}>Оценка:</span>
                 <Controller
@@ -52,9 +60,16 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId, className, ...props 
                     render={({ field }) => <Rating isEditable={true} error={errors.rating} ref={field.ref} rating={field.value} setRating={field.onChange} />}
                 />
             </div>
-            <Textarea {...register('description', { required: { value: true, message: 'Укажите описание' } })} error={errors.description} className={styles.textarea} placeholder="Текст отзыва" />
+            <Textarea
+                {...register('description', { required: { value: true, message: 'Укажите описание' } })}
+                error={errors.description}
+                className={styles.textarea}
+                placeholder="Текст отзыва"
+                aria-label="Текст отзыва"
+                aria-invalid={errors.description ? true : false}
+            />
             <div className={styles.submit}>
-                <Button>Отправить</Button>
+                <Button type="submit" onClick={() => clearErrors}>Отправить</Button>
                 <span className={styles.submitLegend}>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
             </div>
         </div>

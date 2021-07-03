@@ -62,6 +62,12 @@ const Rating = forwardRef<HTMLUListElement, RatingProps>(({ className, error, is
                             tabIndex={isEditable ? 0 : -1}
                             onKeyDown={(e) => onKeyDownItemStar(e, i)}
                             ref={(r) => itemsRating.current[i] = r}
+                            role={isEditable ? 'slider' : ''}
+                            aria-label={isEditable ? 'укажите рейтинг стрелками влево или вправо' : `рейтинг ${rating}`}
+                            aria-valuemin={0}
+                            aria-valuenow={rating}
+                            aria-valumax={BASE_COUNT_RATINGS}
+                            aria-invalid={error ? true : false}
                         >
                             <StarIcon
                                 className={cls(styles.start, i < currentRating && styles.filled)}
@@ -70,7 +76,7 @@ const Rating = forwardRef<HTMLUListElement, RatingProps>(({ className, error, is
                     );
                 })}
             </ul>
-            {error && <span className={styles.errorMessage}>{error.message}</span>}
+            {error && <span role="alert" className={styles.errorMessage}>{error.message}</span>}
         </div>
     );
 });
