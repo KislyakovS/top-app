@@ -24,7 +24,7 @@ const Alias: React.FC<AliasProps> = (props) => {
 export const getStaticPaths: GetStaticPaths = async () => {
     let paths: string[] = [];
 
-    for (const m of firstLevelMenu) {
+    for await (const m of firstLevelMenu) {
         const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
             firstCategory: m.id
         });
@@ -34,7 +34,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     return {
         paths,
-        fallback: true
+        fallback: false
     };
 };
 
